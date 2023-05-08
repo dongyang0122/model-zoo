@@ -52,15 +52,15 @@ Three channels
 - Label 1: pancreas
 - Label 0: everything else
 
-### GPU Memory Consumption
-
-Dataset Class: CacheDataset
+### Memory Consumption
+Dataset Manager: CacheDataset
 Data Size: 420 3D Volumes
 Cache Rate: 1.0
-Multi-GPU VRAM: (at least) 16GB GPUs
+Single GPU - System RAM Usage: The caching rate is set to be 0.125 with 50GB system RAM. It is advisable to increase the caching rate proportionally when there is more sysmte RAM available.
+Multi GPU (8 GPUs) - System RAM Usage: The caching rate is set to be 1.0 with 400GB system RAM. It is advisable to reduce the caching rate proportionally when there is less sysmte RAM available.
 
 ### System RAM Consumption Warning
-The default settings of model training and searching are verified with 8 $\times$ 80GB A100 GPUs and 400GB of system (CPU) RAM. Ample RAM is essential as we aim to cache all pre-processed data points in RAM to enhance the efficiency of model searching and training with [CacheDataset](https://docs.monai.io/en/stable/data.html#cachedataset). Should any errors occur during data pre-processing or caching in model search or training, kindly decrease the caching rate `cache_rate` in the configurations (e.g., [training](../configs/train.yaml) and [multi-GPU training](../configs/multi_gpu_train.yaml)) within range $(0, 1)$ to minimize the CPU RAM requirements.
+Ample RAM is essential as we aim to cache all as many pre-processed data points in RAM as possible to enhance the efficiency of model searching and training with [CacheDataset](https://docs.monai.io/en/stable/data.html#cachedataset). Should any errors occur during data pre-processing or caching in model search or training, kindly decrease the caching rate `cache_rate` in the configurations (e.g., [training](../configs/train.yaml) and [multi-GPU training](../configs/multi_gpu_train.yaml)) within range $(0, 1)$ to minimize the CPU RAM requirements.
 
 ## Performance
 Dice score is used for evaluating the performance of the model. This model achieves a mean dice score of 0.62.
