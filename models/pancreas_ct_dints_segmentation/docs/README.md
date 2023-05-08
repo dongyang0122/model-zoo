@@ -53,6 +53,7 @@ Three channels
 - Label 0: everything else
 
 ### Memory Consumption
+<<<<<<< HEAD
 Dataset Manager: CacheDataset
 Data Size: 420 3D Volumes
 Cache Rate: 1.0
@@ -61,6 +62,17 @@ Multi GPU (8 GPUs) - System RAM Usage: The caching rate is set to be 1.0 with 40
 
 ### System RAM Consumption Warning
 Ample RAM is essential as we aim to cache all as many pre-processed data points in RAM as possible to enhance the efficiency of model searching and training with [CacheDataset](https://docs.monai.io/en/stable/data.html#cachedataset). Should any errors occur during data pre-processing or caching in model search or training, kindly decrease the caching rate `cache_rate` in the configurations (e.g., [training](../configs/train.yaml) and [multi-GPU training](../configs/multi_gpu_train.yaml)) within range $(0, 1)$ to minimize the CPU RAM requirements.
+=======
+
+- Dataset Manager: CacheDataset
+- Data Size: 420 3D Volumes
+- Cache Rate: 1.0
+- Multi GPU (8 GPUs) - System RAM Usage: 400G
+
+### Memory Consumption Warning
+
+If you face memory issues with CacheDataset, you can either switch to a regular Dataset class or lower the caching rate `cache_rate` in the configurations within range $(0, 1)$ to minimize the System RAM requirements.
+>>>>>>> 0c1266304c082862143f6936a18e80753f5c718b
 
 ## Performance
 Dice score is used for evaluating the performance of the model. This model achieves a mean dice score of 0.62.
